@@ -59,6 +59,7 @@ function App() {
 
       setChannel(channel);
     } catch (err) {
+      
       console.log(err);
     }
   }
