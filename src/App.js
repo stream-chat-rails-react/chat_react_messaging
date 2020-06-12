@@ -39,7 +39,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        'https://chatty-cathy-stream.herokuapp.com',
+        'https://chatty-cathy-stream.herokuapp.com/v1/auth/init',
         payload
       );
 
