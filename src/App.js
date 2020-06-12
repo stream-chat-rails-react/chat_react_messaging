@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import React, { useState } from 'react';
 import './App.css';
 import {
@@ -40,7 +39,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        process.env.API_ENDPOINT,
+        process.env.REACT_APP_API_ENDPOINT,
         payload
       );
 
