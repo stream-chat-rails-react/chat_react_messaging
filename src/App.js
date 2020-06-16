@@ -39,7 +39,7 @@ function App() {
 
     try {
       const response = await axios.get(
-        "https://ruby-chat-stream.herokuapp.com/v1/auth",
+        "https://ruby-chat-stream.herokuapp.com/api/v1/auth",
         payload
       );
 
