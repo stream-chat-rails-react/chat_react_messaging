@@ -38,8 +38,8 @@ function App() {
     };
 
     try {
-      const response = await axios.post(
-        process.env.REACT_APP_API_ENDPOINT,
+      const response = await axios.get(
+        "https://ruby-chat-stream.herokuapp.com/v1/auth",
         payload
       );
 
