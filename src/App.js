@@ -22,24 +22,20 @@ let chatClient;
 function App() {
   const [channel, setChannel] = useState(null);
   const [auth, setAuth] = useState('login');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   async function login() {
     const payload = {
-      name: {
-        first: firstName,
-        last: lastName,
-      },
+      username: username,
       email: email,
       password: password,
     };
 
     try {
       const response = await axios.get(
-        "https://ruby-chat-stream.herokuapp.com/api/v1/auth",
+        "http://localhost:3000/api/v1/auth",
         payload
       );
 
@@ -48,7 +44,7 @@ function App() {
       await chatClient.setUser(
         {
           id: user._id,
-          name: user.name.first,
+          username: user.username,
           role: 'admin',
         },
         token
@@ -89,10 +85,8 @@ function App() {
     <Auth
       auth={auth}
       setAuth={setAuth}
-      firstName={firstName}
-      setFirstName={setFirstName}
-      lastName={lastName}
-      setLastName={setLastName}
+      username={username}
+      setUsername={setUsername}
       email={email}
       setEmail={setEmail}
       password={password}

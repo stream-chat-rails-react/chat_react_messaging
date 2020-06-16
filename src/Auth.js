@@ -4,12 +4,10 @@ import './Auth.css';
 
 function Auth(props) {
   const {
-    firstName,
+    username,
     auth,
     setAuth,
-    setFirstName,
-    lastName,
-    setLastName,
+    setUsername,
     email,
     setEmail,
     password,
@@ -50,21 +48,21 @@ function Auth(props) {
           <div className="signup">
             <form action="">
               <div className={`field ${auth === 'login' ? 'hidden' : ''}`}>
-                <label className="label" htmlFor="first_name">
-                  First name:
+                <label className="label" htmlFor="username">
+                  Username:
                 </label>
                 <div className="control">
                   <input
-                    id="first_name"
+                    id="username"
                     className="input"
                     type="text"
-                    name="first_name"
-                    value={firstName}
-                    onChange={e => setFirstName(e.target.value)}
+                    name="username"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
                   />
                 </div>
               </div>
-              <div className={`field ${auth === 'login' ? 'hidden' : ''}`}>
+              {/* <div className={`field ${auth === 'login' ? 'hidden' : ''}`}>
                 <label className="label" htmlFor="last_name">
                   Last name:
                 </label>
@@ -78,7 +76,7 @@ function Auth(props) {
                     onChange={e => setLastName(e.target.value)}
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="field">
                 <label className="label" htmlFor="email">
                   Email:
