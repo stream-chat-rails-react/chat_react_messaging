@@ -47,7 +47,7 @@ function Auth(props) {
         <div className="content">
           <div className="signup">
             <form action="">
-              <div className={`field ${auth === 'login' ? 'hidden' : ''}`}>
+              <div className="field">
                 <label className="label" htmlFor="username">
                   Username:
                 </label>
@@ -62,22 +62,7 @@ function Auth(props) {
                   />
                 </div>
               </div>
-              {/* <div className={`field ${auth === 'login' ? 'hidden' : ''}`}>
-                <label className="label" htmlFor="last_name">
-                  Last name:
-                </label>
-                <div className="control">
-                  <input
-                    id="last_name"
-                    className="input"
-                    type="text"
-                    name="last_name"
-                    value={lastName}
-                    onChange={e => setLastName(e.target.value)}
-                  />
-                </div>
-              </div> */}
-              <div className="field">
+              <div className={`field ${auth === 'login' ? 'hidden' : ''}`}>
                 <label className="label" htmlFor="email">
                   Email:
                 </label>
