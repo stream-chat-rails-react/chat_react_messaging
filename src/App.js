@@ -28,29 +28,27 @@ function App() {
 
   async function login() {
     const payload = {
-      username: username,
       email: email,
-      password: password,
+      password: password
     };
 
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/v1/auth",
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/login",
         payload
       );
-
-      const { apiKey, user, token } = response.data;
-      chatClient = new StreamChat(apiKey);
+      const { id, email, token } = response.data;
+      chatClient = new StreamChat(process.env.REACT_APP_STREAM_API_KEY);
       await chatClient.setUser(
         {
-          id: user._id,
-          username: user.username,
-          role: 'admin',
+          id,
+          email,
+          role: 'admin'
         },
         token
       );
 
-      const channel = chatClient.channel('messaging', 'General');
+      const channel = chatClient.channel('messaging', id);
       await channel.watch();
 
       setChannel(channel);
