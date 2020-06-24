@@ -17,6 +17,8 @@ import axios from 'axios';
 import Auth from './Auth';
 
 import 'stream-chat-react/dist/css/index.css';
+import dotenv from 'dotenv';
+dotenv.config();
 
 let chatClient;
 function App() {
@@ -34,23 +36,24 @@ function App() {
     };
 
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         "http://localhost:3000/api/v1/auth",
         payload
       );
 
-      const { apiKey, user, token } = response.data;
-      chatClient = new StreamChat(apiKey);
+      const { id, username, token } = response.data;
+      console.log(response.data);
+      chatClient = new StreamChat(process.env.REACT_APP_STREAM_API_KEY);
       await chatClient.setUser(
         {
-          id: user._id,
-          username: user.username,
-          role: 'admin',
+          id,
+          username,
+          role: 'admin'
         },
         token
       );
 
-      const channel = chatClient.channel('messaging', 'General');
+      const channel = chatClient.channel('messaging', 'Tutorial');
       await channel.watch();
 
       setChannel(channel);
