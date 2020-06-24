@@ -42,7 +42,6 @@ function App() {
       );
 
       const { id, username, token } = response.data;
-      console.log(response.data);
       chatClient = new StreamChat(process.env.REACT_APP_STREAM_API_KEY);
       await chatClient.setUser(
         {
